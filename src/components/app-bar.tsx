@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Menu, Store, ShoppingBag } from "lucide-react"
+import { Menu, ShoppingBag, ShoppingCart } from "lucide-react"
 import { ModeToggle } from "./theme-toggle"
 import { useNavigate, useLocation } from "react-router"
 
@@ -54,17 +54,17 @@ export function AppBar({ onMenuClick, user }: AppBarProps) {
             onClick={() => navigate('/')}
             className="gap-2"
           >
-            <Store className="h-4 w-4" />
-            Home
-          </Button>
-          <Button
-            variant={isActive('/products') ? "default" : "ghost"}
-            size="sm"
-            onClick={() => navigate('/products')}
-            className="gap-2"
-          >
             <ShoppingBag className="h-4 w-4" />
             Products
+          </Button>
+          <Button
+            variant={isActive('/cart') ? "default" : "ghost"}
+            size="sm"
+            onClick={() => navigate('/cart')}
+            className="gap-2"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Cart
           </Button>
         </nav>
 
@@ -80,16 +80,16 @@ export function AppBar({ onMenuClick, user }: AppBarProps) {
                 <DropdownMenuLabel>Navigation</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => navigate('/')}>
-                  <Store className="h-4 w-4 mr-2" />
-                  Home
+                  <ShoppingBag className="h-4 w-4 mr-2" />
+                  Products
                 </DropdownMenuItem>
               </DropdownMenuContent>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuLabel>Navigation</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => navigate('/products')}>
-                  <ShoppingBag className="h-4 w-4 mr-2" />
-                  Products
+                <DropdownMenuItem onClick={() => navigate('/cart')}>
+                  <ShoppingCart className="h-4 w-4 mr-2" />
+                  Cart
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

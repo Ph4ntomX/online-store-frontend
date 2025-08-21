@@ -47,6 +47,10 @@ export default function Cart() {
         <h2 className="text-2xl font-semibold mb-6 text-center">Cart</h2>
 
         <Table>
+          {cart.length === 0 && (
+            <TableCaption>You have no items in your cart.</TableCaption>
+          )}
+
           <TableHeader>
             <TableRow>
               <TableHead>Product</TableHead>

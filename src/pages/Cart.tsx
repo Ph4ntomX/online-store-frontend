@@ -85,7 +85,14 @@ export default function Cart() {
         </Table>
 
         <div className="flex justify-end mt-4">
-          <Button className="bg-green-500 hover:bg-green-600 text-white" onClick={() => navigate('/checkout')}>Checkout</Button>
+          <Button className="bg-green-500 hover:bg-green-600 text-white" onClick={() => {
+            if (cart.length === 0) {
+              toast.error('Please add products to cart')
+              return
+            }
+
+            navigate('/checkout')
+          }}>Checkout</Button>
         </div>
       </main>
     </>

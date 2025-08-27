@@ -24,6 +24,11 @@ export default function Checkout() {
     })
 
     const onSubmit = (data: any) => {
+        if (cart.length === 0) {
+            toast.error('Please add products to cart')
+            return
+        }
+
         if (!data.customerName || !data.customerEmail) {
             toast.error('Please enter customer name and email')
             return

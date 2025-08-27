@@ -9,3 +9,14 @@ export interface Product {
 export interface CartProduct extends Product {
     quantity: number;
 }
+
+export interface Order {
+    customerName: string;
+    customerEmail: string;
+    products: CartProduct[];
+    totalPrice: number;
+    status: "pending" | "paid" | "failed" | "completed";
+    billplz_id: string;
+    billplz_url: string;
+    paid_at: string;
+}

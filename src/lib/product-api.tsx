@@ -1,8 +1,8 @@
 import axios from "axios";
+import { URL } from "./constants";
 import type { Product } from "../types/skill";
 
 const pageLimit = 6;
-const URL = "http://localhost:5123";
 
 export const getProduct: (id: string) => Promise<Product> = async (id: string) => {
     try {

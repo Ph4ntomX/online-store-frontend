@@ -6,6 +6,9 @@ import { Toaster } from "@/components/ui/sonner"
 import Cart from "./pages/Cart"
 import Products from "./pages/Products"
 import ProductCreation from "./pages/ProductCreation"
+import Checkout from "./pages/Checkout"
+import PaymentVerification from "./pages/PaymentVerification"
+import Orders from "./pages/Orders"
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/product" element={<ProductCreation />} />
           <Route path="/product/:id" element={<ProductCreation />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/verify-payment" element={<PaymentVerification />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </Router>
     </ThemeProvider>

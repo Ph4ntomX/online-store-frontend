@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Menu, ShoppingBag, ShoppingCart } from "lucide-react"
+import { Menu, ShoppingBag, ShoppingCart, ListTodo } from "lucide-react"
 import { ModeToggle } from "./theme-toggle"
 import { useNavigate, useLocation } from "react-router"
 
@@ -66,6 +66,15 @@ export function AppBar({ onMenuClick, user }: AppBarProps) {
             <ShoppingCart className="h-4 w-4" />
             Cart
           </Button>
+          <Button
+            variant={isActive('/orders') ? "default" : "ghost"}
+            size="sm"
+            onClick={() => navigate('/orders')}
+            className="gap-2"
+          >
+            <ListTodo className="h-4 w-4" />
+            Orders
+          </Button>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -92,7 +101,15 @@ export function AppBar({ onMenuClick, user }: AppBarProps) {
                   Cart
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuLabel>Navigation</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate('/orders')}>
+                  <ListTodo className="h-4 w-4 mr-2" />
+                  Orders
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+              </DropdownMenu>
           </div>
           <ModeToggle />
         </div>

@@ -9,6 +9,7 @@ import ProductCreation from "./pages/ProductCreation"
 import Checkout from "./pages/Checkout"
 import PaymentVerification from "./pages/PaymentVerification"
 import Orders from "./pages/Orders"
+import Categories from "./pages/Categories"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/verify-payment" element={<PaymentVerification />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/categories" element={<Categories />} />
         </Routes>
       </Router>
     </ThemeProvider>

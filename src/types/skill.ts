@@ -20,3 +20,8 @@ export interface Order {
     billplz_url: string;
     paid_at: string;
 }
+
+export interface Category {
+    _id: string;
+    name: string;
+}

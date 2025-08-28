@@ -4,13 +4,14 @@ import { useForm } from "react-hook-form";
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Product, CartProduct } from "@/types/skill";
+import type { Product, CartProduct, Category } from "@/types/skill";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getProduct, updateProduct, addProduct } from "@/lib/product-api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { toast } from "sonner";
+import { getCategories } from "@/lib/categories-api";
 
 
 
@@ -20,6 +21,8 @@ export default function ProductCreation() {
 
     const [loaded, setLoaded] = useState(false)
     const [productExists, setProductExists] = useState(true);
+
+    const [categories, setCategories] = useState<Category[]>([])
 
     const [cart, setCart] = useLocalStorage<CartProduct[]>('cart', [])
   
@@ -81,6 +84,8 @@ export default function ProductCreation() {
           setProductExists(false);
         }
       });
+
+      getCategories().then(data => setCategories(data))
     } else {
       setLoaded(true)
     }
@@ -142,9 +147,9 @@ export default function ProductCreation() {
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Games">Games</SelectItem>
-                      <SelectItem value="Accessories">Accessories</SelectItem>
-                      <SelectItem value="Consoles">Consoles</SelectItem>
+                      {categories.map(category => (
+                        <SelectItem key={category._id} value={category.name}>{category.name}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />

@@ -10,6 +10,8 @@ import Checkout from "./pages/Checkout"
 import PaymentVerification from "./pages/PaymentVerification"
 import Orders from "./pages/Orders"
 import Categories from "./pages/Categories"
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/verify-payment" element={<PaymentVerification />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </Router>
     </ThemeProvider>

@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Menu, ShoppingBag, ShoppingCart, ListTodo, ChartBarStacked } from "lucide-react"
+import { Menu, ShoppingBag, ShoppingCart, ListTodo, ChartBarStacked, User } from "lucide-react"
 import { ModeToggle } from "./theme-toggle"
 import { useNavigate, useLocation } from "react-router"
 
@@ -128,6 +128,28 @@ export function AppBar({ onMenuClick, user }: AppBarProps) {
               </DropdownMenuContent>
               </DropdownMenu>
           </div>
+
+          {isActive('/signup') ? (
+          <Button
+            variant={isActive('/signup') ? "outline" : "ghost"}
+            size="sm"
+            onClick={() => navigate('/login')}
+            className="gap-2"
+          >
+            <User className="h-4 w-4" />
+            Login
+          </Button>
+          ) : (
+          <Button
+            variant={isActive('/login') ? "outline" : "ghost"}
+            size="sm"
+            onClick={() => navigate('/signup')}
+            className="gap-2"
+          >
+            <User className="h-4 w-4" />
+            Signup
+          </Button>
+          )}
           <ModeToggle />
         </div>
       </div>
